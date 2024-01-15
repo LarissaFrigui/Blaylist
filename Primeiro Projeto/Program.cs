@@ -1,27 +1,5 @@
 ﻿//Screen Sound 
 
-//O C# é uma linguagem fortemente tipada, ou seja, sempre é necessário declarar muito bem a variavel
-//No C# sempre utilizar aspas duplas "" para escrever um texto
-//Diferente do JS que o proprio codigo coloca o ; apesar de ser recomendavel ao programador sempre coloca. Nessa linguagem
-//é essencial colocar o ponto e virgura. 
-//string mensagemDeBoasVindas = "Boas vindas ao Screen Sound ";
-//O comando Console.WriteLine é responsavel por apresentar a mensagem informada no console
-//Console.WriteLine(mensagemDeBoasVindas);
-
-//Exercicio
-//string curso = "Curso de iniciação em linguagem C#";
-//Console.WriteLine($"Curso: {curso}" );
-//string nome = "Guilherme";
-//Console.WriteLine($"Instrutor: {nome} ");
-/*Para fazer a apresentação no console de um texto e uma variavel no JS fariamos uma concatenação com o 
- * simbolo de + ou então utilizar a template string.No C# temos a opção de concatenação vem como
- * uma similar à templete string, nela iniciamos com $ colocar o texto entre "" e as variaveis são apresentadas dentro de {}*/
-
-//Criando funções
-//Quando a função não tem retorno utilizamos a palavra reservada void
-
-//List<string> listaDosGrupos = new List<string> {"BTS", "BlackPink", "Twice", "BigBang"};
-
 Dictionary<string, List<int>> gruposRegistrados = new Dictionary<string, List<int>>();
 gruposRegistrados.Add ("BTS",new List<int> { 10, 9 , 10});
 gruposRegistrados.Add("TXT", new List<int>());
@@ -35,8 +13,6 @@ void ExibirLogo()
 ");
     Console.WriteLine("Boas vindas ao Blaylist sua playlist de KPOP ");
 }
-/*Para as variaveis temos o padrao de iniciar com letra minuscula como visto mensagemDeBoasVindas, 
- * já para declaração de funções iniciamos com letra maiuscula ExibirMensagemDeBoasVindas.*/
 
 void ExibirOpcoesDoMenu()
 {
@@ -47,12 +23,10 @@ void ExibirOpcoesDoMenu()
     Console.WriteLine("Digite 4 para exibir a média de um grupo");
     Console.WriteLine("Digite -1 para sair");
 
-    //Quando utilizamos só o Write sem a palavra seguinte Line ele escreve o texto e nao pula uma linha dessa forma o nosso proximo comando 
-    //ReadLine estará disponivel na mesma linha do texto. 
     Console.Write("\nDigite a sua opção: ");
     string opcaoEscolhida = Console.ReadLine()!;
     int opcaoEscolhidaNumerica = int.Parse(opcaoEscolhida);
-    //O ! que colocamos é responsavel por eliminar a opção da opcaoEscolhida ser um valor nulo, pois nesse caso ela necessariamente precisa ser uma string
+
     switch (opcaoEscolhidaNumerica)
     {
         case 1: RegistrarGrupos();
@@ -108,11 +82,6 @@ void MostrarGruposRegistrados()
         Console.WriteLine(i + "° Grupo: " + grupos);
         i++;
     }
-    /* Estrutura for classica
-    for(int i = 0; i < gruposRegistrados.Keys.Count; i++)
-    {
-        Console.WriteLine((i+1) + "° Grupo: "+ gruposRegistrados[i]);
-    }*/
 
     Console.WriteLine("\nDigite uma tecla para voltar ao menu principal");
     Console.ReadKey();
@@ -157,17 +126,8 @@ void MostrarMediaDoGrupo()
         int elementosNaLista = gruposRegistrados[grupoParaMedia].Count;
         if (elementosNaLista > 0)
         {
-            /*int somaParaMedia = 0;
-            List<int> listaParaMedia = gruposRegistrados[grupoParaMedia];
-            for (int i = 0; i < elementosNaLista; i++)
-            {
-                somaParaMedia = somaParaMedia + listaParaMedia[i];
-            }
-            float mediaDoGrupo = (float)somaParaMedia / elementosNaLista;
-            Console.WriteLine("\nA média para o grupo " + grupoParaMedia + " é de " + mediaDoGrupo.ToString("F2"));*/
             List<int> listaParaMedia = gruposRegistrados[grupoParaMedia];
             Console.WriteLine("\nA média para o grupo " + grupoParaMedia + " é de " + listaParaMedia.Average().ToString("F2"));
-            //o comando Average ja pega uma lista e apresenta a media dela 
             Thread.Sleep(2000);
             Console.Clear();
             ExibirOpcoesDoMenu();
@@ -189,12 +149,3 @@ void MostrarMediaDoGrupo()
     }
 }
 ExibirOpcoesDoMenu();
-
-//List<string> grupos = new List<string>{ "BTS", "BlackPink", "BigBang" };
-//Console.WriteLine(grupos[0]);
-
-/*Para a declaração de uma lista é necessario declará-la colocando o tipo, seu nome e posteriormente atribruindo
- * que aquilo é uma nova lista. 
-Quando declaramos uma string colocamos string nomeDaString = "Valor da string", a utilização de List<string> é a forma de 
-declarar que aquilo que entrará é do tipo lista e que será de strings, para uma lista de numeros utilizariamos List<int> 
-ou então qualquer variação de tipos.*/
